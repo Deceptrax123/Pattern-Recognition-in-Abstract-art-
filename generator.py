@@ -34,16 +34,7 @@ class Generator(Module):
         self.bn3 = BatchNorm2d(num_features=128)
         self.relu3 = ReLU()
 
-        self.conv4 = ConvTranspose2d(in_channels=128, out_channels=64,
-                            kernel_size=(4, 4), stride=2,padding=1)
-        self.bn4=BatchNorm2d(num_features=64)
-        self.relu4=ReLU()
-
-        self.conv5=ConvTranspose2d(in_channels=64,out_channels=32,kernel_size=(4,4),stride=2,padding=1)
-        self.bn5=BatchNorm2d(32)
-        self.relu5=ReLU()
-
-        self.conv6=ConvTranspose2d(in_channels=32,out_channels=3,kernel_size=(4,4),padding=1,stride=2)
+        self.conv4=ConvTranspose2d(in_channels=128,out_channels=3,kernel_size=(4,4),padding=1,stride=2)
         self.tanh = Tanh()
 
     def forward(self, x):
@@ -62,16 +53,7 @@ class Generator(Module):
         x = self.bn3(x)
         x = self.relu3(x)
 
-        x = self.conv4(x)
-        x=self.bn4(x)
-        x=self.relu4(x)
-
-        x=self.conv5(x)
-        x=self.bn5(x)
-        x=self.relu5(x)
-
-        x=self.conv6(x)
-
+        x=self.conv4(x)
         x=self.tanh(x)
 
         return x

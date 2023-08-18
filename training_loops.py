@@ -72,8 +72,8 @@ def training_loop():
 
         #save model at epoch checkpoints
         if((epoch+1)%25==0):
-            pathgen='./models/abstract_art/generator{number}.pth'.format(number=epoch+1)
-            pathdis='./models/abstract_art/discriminator{number}.pth'.format(number=epoch+1)
+            pathgen='./models/abstract_art/resized/generator/generator{number}.pth'.format(number=epoch+1)
+            pathdis='./models/abstract_art/resized/discriminator/discriminator{number}.pth'.format(number=epoch+1)
             torch.save(generator.state_dict(),pathgen)
             torch.save(discriminator.state_dict(),pathdis)
     
