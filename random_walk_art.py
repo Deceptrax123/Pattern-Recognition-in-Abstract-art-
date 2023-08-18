@@ -13,7 +13,7 @@ if __name__=='__main__':
     device=torch.device('mps')
 
     model=Generator().to(device=device)
-    model.load_state_dict(torch.load("./models/abstract_art/generator/generator125.pth"))
+    model.load_state_dict(torch.load("./models/abstract_art/generator/generator100.pth"))
 
     z1=torch.randn((1,100)).to(device=device) #noise
     z2=torch.randn((1,100)).to(device=device) #noise
@@ -55,25 +55,32 @@ if __name__=='__main__':
     v3=v3.transpose(0,3,2,1)
 
     #plot
-    dpi=75
-    fig=plt.figure(figsize=(10,10),dpi=dpi)
-
+    fig=plt.figure(figsize=(10,10))
+ 
     ax1=fig.add_subplot(2,3,1)
     ax1.imshow(vec1[0])
+    ax1.set_title("V1")
 
     ax2=fig.add_subplot(2,3,2)
     ax2.imshow(vec2[0])
+    ax2.set_title("V2")
 
     ax3=fig.add_subplot(2,3,3)
     ax3.imshow(vec3[0])
+    ax3.set_title("V3")
+
+    fig.suptitle("A random walk after 100 epochs of training")
 
     ax4=fig.add_subplot(2,3,4)
     ax4.imshow(v[0])
+    ax4.set_title("V2+V3-V1")
 
     ax5=fig.add_subplot(2,3,5)
     ax5.imshow(v2[0])
+    ax5.set_title("V1+V2-V3")
 
     ax6=fig.add_subplot(2,3,6)
     ax6.imshow(v3[0])
+    ax6.set_title("V1-V2+V3")
 
     plt.show()
