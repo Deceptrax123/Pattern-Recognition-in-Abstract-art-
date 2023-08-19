@@ -81,6 +81,6 @@ class Discriminator(Module):
 #     print(f'Total Trainable Params: {total_params}')
 #     return total_params
 
-model = Discriminator()
+#model = Discriminator()
 # # # # # count_parameters(model)
-summary(model,input_size=(3,128,128),batch_size=8,device='cpu')
+#summary(model,input_size=(3,128,128),batch_size=8,device='cpu')

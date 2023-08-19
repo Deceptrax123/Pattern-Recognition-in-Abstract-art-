@@ -62,7 +62,7 @@ def train_step():
 def log_image():
     fake=generator(noise)
 
-    transform=T.compose([T.ToPILImage()])
+    transform=T.Compose([T.ToPILImage()])
     fake_png=transform(fake[0])
 
     return fake_png
@@ -71,11 +71,11 @@ def training_loop():
     discriminator.train(True)
     for epoch in range(num_epochs):
 
-        generator.train(True)
+        generator.train(True) #train mode
     
         train_losses=train_step()
 
-        generator.eval()
+        generator.eval() #eval mode
 
         print('Epoch {epoch}'.format(epoch=epoch+1))
         print("Generator Loss: {gloss}".format(gloss=train_losses[0]))

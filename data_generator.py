@@ -37,7 +37,7 @@ class AbstractArtDataset(torch.utils.data.Dataset):
 
         sample=Image.open("./Abstract/Abstract_gallery/Abstract_gallery/Abstract_image_"+str(id)+".jpg")
 
-        composed_transforms=T.Compose([T.Resize(size=(64,64)),T.ToTensor(),T.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))])
+        composed_transforms=T.Compose([T.Resize(size=(128,128)),T.ToTensor(),T.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))])
         sample=composed_transforms(sample)
 
         return sample
