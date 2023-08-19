@@ -31,9 +31,12 @@ class Discriminator(Module):
         self.bn4=BatchNorm2d(64)
         self.lr4=LeakyReLU(negative_slope=0.2)
 
+        self.conv5=Conv2d(in_channels=64,out_channels=128,kernel_size=(3,3),stride=2,padding=1)
+        self.dp5=Dropout2d(p=0.2)
+        self.bn5=BatchNorm2d(128)
+        self.lr5=LeakyReLU(negative_slope=0.2)
 
-        self.flatten=Flatten(start_dim=1)
-        self.linear=Linear(64*4*4,1)
+        self.conv6=Conv2d(in_channels=128,out_channels=1,kernel_size=(4,4),stride=1,padding=0)
 
     
     def forward(self,x):
@@ -57,8 +60,11 @@ class Discriminator(Module):
         x=self.bn4(x)
         x=self.lr4(x)
 
-        x=self.flatten(x)
-        x=self.linear(x)
+        x=self.conv5(x)
+        x=self.bn5(x)
+        x=self.lr5(x)
+
+        x=self.conv6(x)
 
         return x
 
@@ -75,6 +81,6 @@ class Discriminator(Module):
 #     print(f'Total Trainable Params: {total_params}')
 #     return total_params
 
-#model = Discriminator()
+model = Discriminator()
 # # # # # count_parameters(model)
-#summary(model,input_size=(3,64,64),batch_size=8,device='cpu')
+summary(model,input_size=(3,128,128),batch_size=8,device='cpu')

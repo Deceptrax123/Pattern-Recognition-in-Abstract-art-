@@ -11,6 +11,8 @@ from time import time
 import multiprocessing as mp
 import torch.multiprocessing
 import wandb
+from PIL import Image 
+import torchvision.transforms as T
 
 def train_step():
     gen_loss=0
@@ -29,8 +31,8 @@ def train_step():
 
         #Train the discriminator
         discriminator.zero_grad()
-        out_gen_disc=discriminator(generated_samples)
-        out_real_disc=discriminator(real_samples)
+        out_gen_disc=discriminator(generated_samples).view(real_samples.size(0),1)
+        out_real_disc=discriminator(real_samples).view(real_samples.size(0),1)
 
         gen_loss=loss_function(out_gen_disc,generated_labels)
         dis_loss=loss_function(out_real_disc,real_labels)
@@ -44,7 +46,7 @@ def train_step():
 
         #Training the generator
         generator.zero_grad()
-        output_discriminator_generated=discriminator(generated_samples)
+        output_discriminator_generated=discriminator(generated_samples).view(real_samples.size(0),1)
         generator_loss=loss_function(output_discriminator_generated,real_labels)
         generator_loss.backward()
         generator_optimizer.step()
@@ -57,18 +59,37 @@ def train_step():
 
     return gloss,dloss
 
+def log_image():
+    fake=generator(noise)
+
+    transform=T.compose([T.ToPILImage()])
+    fake_png=transform(fake[0])
+
+    return fake_png
+
 def training_loop():
-    generator.train(True)
     discriminator.train(True)
     for epoch in range(num_epochs):
+
+        generator.train(True)
     
         train_losses=train_step()
+
+        generator.eval()
 
         print('Epoch {epoch}'.format(epoch=epoch+1))
         print("Generator Loss: {gloss}".format(gloss=train_losses[0]))
         print("Discriminator Loss: {dloss}".format(dloss=train_losses[1]))
 
-        wandb.log({'Generator Loss':train_losses[0],'Discriminator Loss':train_losses[1]})
+        generated=log_image()
+        image=wandb.Image(
+            generated,
+            caption="Generated samples in the latent space"
+        )
+
+        wandb.log({'Generator Loss':train_losses[0],'Discriminator Loss':train_losses[1],
+                   "Generated sample":image})
+
 
         #save model at epoch checkpoints
         if((epoch+1)%25==0):
@@ -81,10 +102,10 @@ def training_loop():
 if __name__=='__main__':
     torch.multiprocessing.set_sharing_strategy('file_system')
     #initial setup
-    ids = list(range(0,1500))
+    ids = list(range(0,2782))
 
     params={
-        'batch_size':64,
+        'batch_size':128,
         'shuffle':True,
         'num_workers':0
     }
@@ -98,7 +119,7 @@ if __name__=='__main__':
             "learning_rate":0.0002,
             "architecture":"Adversarial",
             "dataset":"Abstract art, Pokemon from kaggle",
-            "Epochs":100,
+            "Epochs":1000,
         },
     )
 
@@ -115,6 +136,9 @@ if __name__=='__main__':
 
     initialize_weights(generator)
     initialize_weights(discriminator)
+    
+    #testing
+    noise=torch.randn((1,100)).to(device=device)
 
     #hyperparameters
     lr=0.0002
