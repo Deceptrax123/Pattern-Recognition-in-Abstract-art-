@@ -62,10 +62,12 @@ def train_step():
 def log_image():
     fake=generator(noise)
 
-    transform=T.Compose([T.ToPILImage()])
-    fake_png=transform(fake[0])
+    fake=fake.to(device='cpu')
+    fake=fake.detach().numpy()
 
-    return fake_png
+    fake_numpy=fake.transpose(0,3,2,1)
+
+    return fake_numpy
 
 def training_loop():
     discriminator.train(True)
@@ -81,18 +83,16 @@ def training_loop():
         print("Generator Loss: {gloss}".format(gloss=train_losses[0]))
         print("Discriminator Loss: {dloss}".format(dloss=train_losses[1]))
 
-        generated=log_image()
-        image=wandb.Image(
-            generated,
-            caption="Generated samples in the latent space"
-        )
+        #generated=log_image()
+        #image=wandb.Image(
+            #generated
+        #)
 
-        wandb.log({'Generator Loss':train_losses[0],'Discriminator Loss':train_losses[1],
-                   "Generated sample":image})
+        wandb.log({'Generator Loss':train_losses[0],'Discriminator Loss':train_losses[1]})
 
 
         #save model at epoch checkpoints
-        if((epoch+1)%25==0):
+        if(((epoch+1)+250)%25==0):
             pathgen='./models/abstract_art/resized/generator/generator{number}.pth'.format(number=epoch+1)
             pathdis='./models/abstract_art/resized/discriminator/discriminator{number}.pth'.format(number=epoch+1)
             torch.save(generator.state_dict(),pathgen)
@@ -134,8 +134,13 @@ if __name__=='__main__':
     generator=Generator().to(device=device)
     discriminator=Discriminator().to(device=device)
 
-    initialize_weights(generator)
-    initialize_weights(discriminator)
+    #initialize_weights(generator)
+    #initialize_weights(discriminator)
+
+    #start training from checkpoint
+    generator.load_state_dict(torch.load("./models/abstract_art/resized/generator/generator250.pth"))
+    discriminator.load_state_dict(torch.load("./models/abstract_art/resized/discriminator/discriminator250.pth"))
+
     
     #testing
     noise=torch.randn((1,100)).to(device=device)
