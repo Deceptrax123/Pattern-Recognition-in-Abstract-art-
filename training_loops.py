@@ -147,7 +147,7 @@ if __name__=='__main__':
 
     #hyperparameters
     lr=0.0002
-    num_epochs=1000
+    num_epochs=750
     loss_function=nn.BCEWithLogitsLoss()
 
     #set optimizer
