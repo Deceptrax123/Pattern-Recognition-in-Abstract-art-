@@ -20,7 +20,7 @@ Made a generative model that learns the color patterns of various abstract art p
 | Random_walk_art.py | Implementation of random walk on the Latent space |
 | Training_loops.py  | Training the model                                |
 | Transforms.py      | Just messed around with a bunch of transforms     |
-| Models             | Contains the .pt model state files                |
+| Models             | Contains the .pth model state files               |
 
 ## Random Walk
 
