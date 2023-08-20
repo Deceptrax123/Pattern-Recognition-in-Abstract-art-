@@ -1,13 +1,15 @@
-# Art Generation
+# Pattern Recognition in Abstract Art Works
 
-Made a generative model that learns the color patterns of various abstract art pieces to generate its own patterns
+![Result_grid](./outputs/Figure_4.png)
 
-## Table of Contents Used
+A generative model that learns the color patterns of various abstract art pieces to generate its own patterns
 
-| Subject                  | Link                     |
-| ------------------------ | ------------------------ |
-| Dataset                  | [Abstract-Art-Dataset]() |
-| Reference Research paper | [DCGAN Paper]()          |
+## Items Used
+
+| Subject                  | Link                                                            |
+| ------------------------ | --------------------------------------------------------------- |
+| Reference Research paper | [DCGAN Paper](https://arxiv.org/abs/1511.06434)                 |
+| View Run metrics         | [Weights_and_biases](https://api.wandb.ai/links/uaena/fc87yhh1) |
 
 ## Description of Files
 
@@ -21,12 +23,23 @@ Made a generative model that learns the color patterns of various abstract art p
 | Training_loops.py  | Training the model                                |
 | Transforms.py      | Just messed around with a bunch of transforms     |
 | Models             | Contains the .pth model state files               |
+| Outputs            | Contains output generated patterns                |
+| Random-walks       | Results of random walk in the latent space        |
 
 ## Random Walk
 
-As per the DCGAN paper , A random walk on the latent space was implemented to capture logical relationships between the color patterns generated
+As per the DCGAN paper , A random walk on the latent space was implemented to understand hidden relationships between the color patterns generated
+<br>
 
-This is analogous to contextual relationships between words that were capture by word embeddings such as Glove and word2vec. On performing vector arithmetic we can see that a certain color shade can be obtained from an arithemetic operation of other color patterns.
+![Random_walk_experiment](./Random_walks/walk2.png)
+
+<center><b>Experiment performed after 75 epochs</b> </center>
+<br>
+The latent space is an embedding space that extracts features of an image. On performing vector arithmetic we can see that a certain color pattern can be obtained from an arithemetic operation of other color patterns. We can also see that $V_1+V_2+V_3$ gives a slight blue shade , a new pattern hidden in the embedding space
+
+## Results
+
+You can view the run experiments and metric curves [here](https://api.wandb.ai/links/uaena/fc87yhh1)
 
 ## Implementation Notes
 
@@ -34,3 +47,4 @@ This is analogous to contextual relationships between words that were capture by
 - Adams Beta 1 parameter changed to 0.5 as per the DCGAN paper
 - Learning rate set to 0.0002
 - No pooling layers, only strided convolutions used as per the DCGAN paper
+- Added dropout regularization with noise parameter set to 0.2

@@ -54,6 +54,8 @@ if __name__=='__main__':
     vec3=vec3.transpose(0,3,2,1)
     v3=v3.transpose(0,3,2,1)
 
+    plt.imshow(v3[0])
+
     #plot
     fig=plt.figure(figsize=(10,10))
  
