@@ -28,7 +28,7 @@ A generative model that learns the color patterns of various abstract art pieces
 
 ## Random Walk
 
-As per the DCGAN paper , A random walk on the latent space was implemented to understand hidden relationships between the color patterns generated
+A random walk on the latent space was implemented to understand hidden relationships between the color patterns generated after learning the disribution
 
 ![Random_walk_experiment](./Random_walks/walk2.png)
 
