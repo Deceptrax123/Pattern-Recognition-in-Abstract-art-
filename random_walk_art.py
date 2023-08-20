@@ -13,7 +13,7 @@ if __name__=='__main__':
     device=torch.device('mps')
 
     model=Generator().to(device=device)
-    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator75.pth"))
+    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator250.pth"))
 
     z1=torch.randn((1,100)).to(device=device) #noise
     z2=torch.randn((1,100)).to(device=device) #noise
