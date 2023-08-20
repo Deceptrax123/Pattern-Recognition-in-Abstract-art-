@@ -29,13 +29,12 @@ A generative model that learns the color patterns of various abstract art pieces
 ## Random Walk
 
 As per the DCGAN paper , A random walk on the latent space was implemented to understand hidden relationships between the color patterns generated
-<br>
 
 ![Random_walk_experiment](./Random_walks/walk2.png)
 
-<center><b>Experiment performed after 75 epochs</b> </center>
-<br>
-The latent space is an embedding space that extracts features of an image. On performing vector arithmetic we can see that a certain color pattern can be obtained from an arithemetic operation of other color patterns. We can also see that $V_1+V_2+V_3$ gives a slight blue shade , a new pattern hidden in the embedding space
+<p style="text-align: center"> <b>Experiment performed after 75 epochs</b> </p>
+
+The latent space is an embedding space that extracts features of an image. On performing vector arithmetic we can see that a certain color pattern can be obtained from an arithemetic operation of other color patterns. We can also see that V1-V2+V3 gives a slight blue shade , a new pattern hidden in the embedding space
 
 ## Results
 
