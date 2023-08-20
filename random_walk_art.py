@@ -13,7 +13,7 @@ if __name__=='__main__':
     device=torch.device('mps')
 
     model=Generator().to(device=device)
-    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator250.pth"))
+    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator75.pth"))
 
     z1=torch.randn((1,100)).to(device=device) #noise
     z2=torch.randn((1,100)).to(device=device) #noise
@@ -69,7 +69,7 @@ if __name__=='__main__':
     ax3.imshow(vec3[0])
     ax3.set_title("V3")
 
-    fig.suptitle("A random walk after 100 epochs of training")
+    fig.suptitle("A random walk to explore the Latent Space")
 
     ax4=fig.add_subplot(2,3,4)
     ax4.imshow(v[0])
