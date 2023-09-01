@@ -118,7 +118,7 @@ if __name__=='__main__':
         config={
             "learning_rate":0.0002,
             "architecture":"Adversarial",
-            "dataset":"Abstract art, Pokemon from kaggle",
+            "dataset":"Abstract art",
             "Epochs":1000,
         },
     )
