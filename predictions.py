@@ -3,7 +3,7 @@ import torchvision
 import torchvision.transforms as T 
 import numpy as np 
 import matplotlib.pyplot as plt
-from generator import Generator
+from Base_dcgan.generator import Generator
 
 if __name__=='__main__':
     device=torch.device('mps')

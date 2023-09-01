@@ -4,7 +4,7 @@ import torch
 import numpy as np 
 import matplotlib.pyplot as plt 
 import torchvision 
-from generator import Generator
+from Base_dcgan.generator import Generator
 import torchvision.transforms as T
 from PIL import Image
 

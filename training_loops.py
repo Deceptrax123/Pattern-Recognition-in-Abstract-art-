@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 from data_generator import PokemonDataset,AbstractArtDataset
 from discriminator import Discriminator
-from generator import Generator
+from Base_dcgan.generator import Generator
 import numpy as np
 import matplotlib.pyplot as plt
 from initialize import initialize_weights
