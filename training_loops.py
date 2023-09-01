@@ -109,7 +109,7 @@ if __name__=='__main__':
     ids = list(range(0,2782))
 
     params={
-        'batch_size':128,
+        'batch_size':32,
         'shuffle':True,
         'num_workers':0
     }

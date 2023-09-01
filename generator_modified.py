@@ -185,5 +185,5 @@ class Generator(Module):
 #     return total_params
 
 
-model = Generator()
-summary(model,input_size=(100,),batch_size=8,device='cpu')
+#model = Generator()
+#summary(model,input_size=(100,),batch_size=8,device='cpu')
