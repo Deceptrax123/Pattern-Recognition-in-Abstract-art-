@@ -1,11 +1,11 @@
 import torch
 from torch.utils.data import DataLoader
-from data_generator import PokemonDataset,AbstractArtDataset
+from data_generator import AbstractArtDataset
 import numpy as np
 import matplotlib.pyplot as plt
 from initialize import initialize_weights
-from discriminator_modified import Discriminator
-from generator_modified import Generator
+from discriminator import Discriminator
+from generator import Generator
 from torch import nn
 from time import time
 import multiprocessing as mp
@@ -113,8 +113,7 @@ if __name__=='__main__':
         'shuffle':True,
         'num_workers':0
     }
-
-    #dataset=PokemonDataset(ids)
+    
     dataset=AbstractArtDataset(ids)
 
     wandb.init(
@@ -123,7 +122,7 @@ if __name__=='__main__':
             "learning_rate":0.0002,
             "architecture":"Adversarial",
             "dataset":"Abstract art",
-            "Epochs":1000,
+            "Epochs":300,
         },
     )
 
