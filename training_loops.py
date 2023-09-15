@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data import DataLoader
-from data_generator import AbstractArtDataset
+from Art_dataset import AbstractArtDataset
 import numpy as np
 import matplotlib.pyplot as plt
 from initialize import initialize_weights
