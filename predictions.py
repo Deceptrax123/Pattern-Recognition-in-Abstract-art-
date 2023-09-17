@@ -3,14 +3,16 @@ import torchvision
 import torchvision.transforms as T 
 import numpy as np 
 import matplotlib.pyplot as plt
-from Base_dcgan.generator import Generator
-torch.manual_seed(seed=32)
+from generator import Generator
+
 
 if __name__=='__main__':
     device=torch.device('mps')
 
     model=Generator().to(device=device)
-    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator100.pth"))
+
+    model.eval()
+    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator250.pth"))
 
     latent_space=torch.randn((1,100)).to(device=device)
 

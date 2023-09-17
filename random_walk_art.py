@@ -4,7 +4,7 @@ import torch
 import numpy as np 
 import matplotlib.pyplot as plt 
 import torchvision 
-from Base_dcgan.generator import Generator
+from generator import Generator
 import torchvision.transforms as T
 from PIL import Image
 
@@ -13,6 +13,8 @@ if __name__=='__main__':
     device=torch.device('mps')
 
     model=Generator().to(device=device)
+
+    model.eval()
     model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator250.pth"))
 
     z1=torch.randn((1,100)).to(device=device) #noise
@@ -54,7 +56,7 @@ if __name__=='__main__':
     vec3=vec3.transpose(0,3,2,1)
     v3=v3.transpose(0,3,2,1)
 
-    plt.imshow(v3[0])
+    #plt.imshow(v3[0])
 
     #plot
     fig=plt.figure(figsize=(10,10))
