@@ -1,15 +1,9 @@
 # Pattern Recognition in Abstract Art Works
 
-![Result_grid](./outputs/Figure_4.png)
+![Result_grid](./research_utils/outputs/Figure_4.png)
 
 A generative model that learns the color patterns of various abstract art pieces to generate its own patterns
 
-## Items Used
-
-| Subject                  | Link                                                            |
-| ------------------------ | --------------------------------------------------------------- |
-| Reference Research paper | [DCGAN Paper](https://arxiv.org/abs/1511.06434)                 |
-| View Run metrics         | [Weights_and_biases](https://api.wandb.ai/links/uaena/fc87yhh1) |
 
 ## Description of Files
 
@@ -30,11 +24,11 @@ A generative model that learns the color patterns of various abstract art pieces
 
 A random walk on the latent space was implemented to understand hidden relationships between the color patterns generated after learning the disribution
 
-![Random_walk_experiment](./Random_walks/walk2.png)
+![Random_walk_experiment](./research_utils/Random_walks/walk2.png)
 
 <p style="text-align: center"> <b>Experiment performed after 75 epochs</b> </p>
 
-The latent space is an embedding space that extracts features of an image. On performing vector arithmetic we can see that a certain color pattern can be obtained from an arithemetic operation of other color patterns. We can also see that V1-V2+V3 gives a slight blue shade , a new pattern hidden in the embedding space
+The latent space is an embedding space that contains representations of low and high level features. On performing vector arithmetic we can see that a certain color pattern can be obtained from an arithemetic operation of other color patterns. We can also see that V1-V2+V3 gives a slight blue shade , a new pattern hidden in the embedding space
 
 ## Results
 
