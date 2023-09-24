@@ -18,9 +18,7 @@ A generative model that learns the color patterns of various abstract art pieces
 | training_loops.py  | Training the model                                |
 | transforms.py      | Just messed around with a bunch of transforms     |
 | models             | Contains the .pth model state files               |
-| outputs            | Contains output generated patterns                |
-| random-walks       | Results of random walk in the latent space        |
-
+|post_process.py| Contains source code for Gaussian and Median smoothening|
 ## Random Walk
 
 A random walk on the latent space was implemented to understand hidden relationships between the color patterns generated after learning the disribution
