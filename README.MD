@@ -9,16 +9,17 @@ A generative model that learns the color patterns of various abstract art pieces
 
 | File               | Functionality                                     |
 | ------------------ | ------------------------------------------------- |
-| Discriminator.py   | Model architecture of the discriminator           |
-| Generator.py       | Model architecture of the generator               |
-| Data_generator.py  | Dataset class                                     |
-| Initialize.py      | Initializer class                                 |
-| Random_walk_art.py | Implementation of random walk on the Latent space |
-| Training_loops.py  | Training the model                                |
-| Transforms.py      | Just messed around with a bunch of transforms     |
-| Models             | Contains the .pth model state files               |
-| Outputs            | Contains output generated patterns                |
-| Random-walks       | Results of random walk in the latent space        |
+|Research_utils | Contains achitecture diagrams, outputs and random walk experiments|
+| discriminator.py   | Model architecture of the discriminator           |
+| generator.py       | Model architecture of the generator               |
+| art_dataset.py  | Dataset class                                     |
+| initialize.py      | Initializer class                                 |
+| random_walk_art.py | Implementation of random walk on the Latent space |
+| training_loops.py  | Training the model                                |
+| transforms.py      | Just messed around with a bunch of transforms     |
+| models             | Contains the .pth model state files               |
+| outputs            | Contains output generated patterns                |
+| random-walks       | Results of random walk in the latent space        |
 
 ## Random Walk
 
