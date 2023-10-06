@@ -21,16 +21,27 @@ if __name__=='__main__':
     z2=torch.randn((1,100)).to(device=device) #noise
     z3=torch.randn((1,100)).to(device=device) #noise
 
+    z4=torch.randn((1,100)).to(device=device) #noise
+    z5=torch.randn((1,100)).to(device=device) #noise
+    z6=torch.randn((1,100)).to(device=device) #noise
+
     vec1=model(z1)
     vec2=model(z2) 
     vec3=model(z3)
+    vec4=model(z4)
+    vec5=model(z5)
+    vec6=model(z6)
+
+    vec1=(vec2+vec4)/2
+    vec2=(vec1+vec3)/2
+    vec3=(vec5+vec6)/2
 
     #vector arithmetic
-    v=vec3+vec2-vec1
+    v=(vec3+vec2-vec1)
 
-    v2=vec1+vec2-vec3
+    v2=(vec1+vec2-vec3)
 
-    v3=vec1-vec2+vec3
+    v3=(vec1-vec2+vec3)
 
 
     vec1=vec1.to(device='cpu')

@@ -12,7 +12,7 @@ if __name__=='__main__':
     model=Generator().to(device=device)
 
     model.eval()
-    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/stable/generator250.pth"))
+    model.load_state_dict(torch.load("./models/abstract_art/resized/generator/unstable/generator325.pth"))
 
     latent_space=torch.randn((1,100)).to(device=device)
 
