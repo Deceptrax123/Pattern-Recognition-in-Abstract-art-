@@ -14,7 +14,6 @@ Icon
 Data
 .vscode/
 Abstract
-models/
 
 #experiment notebooks
 test_noise.ipynb
