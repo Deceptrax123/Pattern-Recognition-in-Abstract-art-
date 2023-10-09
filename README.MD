@@ -22,6 +22,7 @@
 | random_walk_art.py | Implementation of random walk on the Latent space |
 | training_loops.py  | Training the model                                |
 | models             | Contains the .pth model state files               |
+|predictions.py|Contains source code for visualizing outputs|
 |post_process.py| Contains source code for Gaussian and Median smoothening|
 
 ## Experiments
