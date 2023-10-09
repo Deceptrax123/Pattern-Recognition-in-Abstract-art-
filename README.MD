@@ -1,8 +1,13 @@
 # Pattern Recognition in Abstract Art Works
 
-![Result_grid](./research_utils/outputs/Figure_4.png)
+|Figure 1|Figure 2 | Figure 3  |
+|-----|-------|-----|
+|![result](./research_utils/outputs/Figure_13.png)|![result](./research_utils/outputs/Figure_5.png)|![result](./research_utils/outputs/Figure_6.png)|
 
-A generative model that learns the color patterns of various abstract art pieces to generate its own patterns
+## Abstract
+<p>
+    Abstract Art is an immensely popular, discussed form of art that often has the ability to depict the emotions of an artist. Many researchers have made attempts to study abstract art in the form of edge detection, brush stroke and emotion recognition algorithms using machine and deep learning. This papers describes the study of a wide distribution of abstract paintings using Generative Adversarial Neural Networks(GAN). GANs have the ability to learn and reproduce a distribution enabling researchers and scientists to effectively explore and study the generated image space. However, the challenge lies in developing an efficient GAN architecture that overcomes common training pitfalls. This paper addresses this challenge by introducing a modified-DCGAN (mDCGAN) specifically designed for high-quality artwork generation. The approach involves a thorough exploration of the modifications made, delving into the intricate workings of DCGANs, optimisation techniques, and regularisation methods aimed at improving stability and realism in art generation enabling effective study of generated patterns. The proposed mDCGAN incorporates meticulous adjustments in layer configurations and architectural choices, offering tailored solutions to the unique demands of art generation while effectively combating issues like mode collapse and gradient vanishing. The evaluation results of mDCGAN demonstrates a remarkable reduction in mode collapse occurrences when compared to the standard DCGAN configuration. This reduction significantly broadens the range of generated artworks, indicating the model's enhanced diversity and stability. Further this paper explores the generated latent space by performing random walks to understand vector relationships between brush strokes and colours in the abstract art space and a statistical analysis of unstable outputs after a certain period of GAN training and compare its significant difference. These findings validate the effectiveness of the proposed approach, emphasising its potential to revolutionise the field of digital art generation and digital art ecosystem.
+</p>
 
 
 ## Description of Files
@@ -16,27 +21,9 @@ A generative model that learns the color patterns of various abstract art pieces
 | initialize.py      | Initializer class                                 |
 | random_walk_art.py | Implementation of random walk on the Latent space |
 | training_loops.py  | Training the model                                |
-| transforms.py      | Just messed around with a bunch of transforms     |
 | models             | Contains the .pth model state files               |
 |post_process.py| Contains source code for Gaussian and Median smoothening|
-## Random Walk
 
-A random walk on the latent space was implemented to understand hidden relationships between the color patterns generated after learning the disribution
-
-![Random_walk_experiment](./research_utils/Random_walks/walk2.png)
-
-<p style="text-align: center"> <b>Experiment performed after 75 epochs</b> </p>
-
-The latent space is an embedding space that contains representations of low and high level features. On performing vector arithmetic we can see that a certain color pattern can be obtained from an arithemetic operation of other color patterns. We can also see that V1-V2+V3 gives a slight blue shade , a new pattern hidden in the embedding space
-
-## Results
+## Experiments
 
 You can view the run experiments and metric curves [here](https://api.wandb.ai/links/uaena/fc87yhh1)
-
-## Implementation Notes
-
-- Used BCEwithLogits Loss function of Pytorch instead of a sigmoid layer in discriminator for stable results
-- Adams Beta 1 parameter changed to 0.5 as per the DCGAN paper
-- Learning rate set to 0.0002
-- No pooling layers, only strided convolutions used as per the DCGAN paper
-- Added dropout regularization with noise parameter set to 0.2
