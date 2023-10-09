@@ -1,4 +1,4 @@
-# Pattern Recognition in Abstract Art Works
+# Colour and Brush Stroke Pattern Recognition in Abstract Art using Modified Deep Convolutional Generative Adversarial Networks
 
 |Figure 1|Figure 2 | Figure 3  |
 |-----|-------|-----|
